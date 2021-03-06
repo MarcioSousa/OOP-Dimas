@@ -1,8 +1,16 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package fatec.poo.model;
+
 /**
+ *
  * @author Marcio Sousa
  */
 public class Aluno {
-    private int RA;
+     private int RA;
     private double NtPrv1;
     private double NtPrv2;
     private double NtTrab1;
@@ -49,18 +57,14 @@ public class Aluno {
     }
 
     public double calcMediaProva(){
-        double resultado =  (0.75 * (NtPrv1 + 2 * NtPrv2))/3;
-        return resultado;
+        return ((0.75 * (NtPrv1 + 2 * NtPrv2))/3);
     }
     
     public double calcMediaTrab(){
-        double resultado = (0.25 * (NtTrab1 + NtTrab2))/2;
-        return resultado;
+        return ((0.25 * (NtTrab1 + NtTrab2))/2);
     }
     
     public double calcMediaFinal(){
-        double resultado = (calcMediaProva() + calcMediaTrab())/2;
-        return resultado;
+        return ((calcMediaProva() + calcMediaTrab())/2);
     }
-    
 }
