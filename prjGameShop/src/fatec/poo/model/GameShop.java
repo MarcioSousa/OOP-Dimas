@@ -5,11 +5,16 @@ package fatec.poo.model;
  * @author Marcio Sousa
  */
 public class GameShop {
-    int codigo;
-    int idade;
-    double qtdehoras;
+    private int codigo;
+    private int idade;
+    private double qtdehoras;
     
-   public int getCodigo() {
+    public GameShop(int codigo, int idade){
+        this.codigo = codigo;
+        this.idade = idade;
+    }
+    
+    public int getCodigo() {
         return codigo;
     }
 
@@ -17,25 +22,20 @@ public class GameShop {
         return idade;
     }
 
-    public double getQtdehoras() {
+    public double getQtdehoras(){
         return qtdehoras;
     }
 
-    public GameShop(int codigo, int idade) {
-        this.codigo = codigo;
-        this.idade = idade;
-    }
-
     public void comprar(double qtdeHoras){
-        qtdehoras = this.qtdehoras + qtdeHoras;
+        qtdehoras += qtdeHoras;
     }
     
     public void jogar(double qtdeHoras){
-    
+        qtdehoras -= qtdeHoras;
     }
     
     public void brinde(){
-        
+        qtdehoras = qtdehoras * 2;
     }
     
     
