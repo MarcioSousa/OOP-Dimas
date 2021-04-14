@@ -36,7 +36,7 @@ public class FuncionarioComissionado extends Funcionario {
     
     @Override
     public double calcSalBruto() {
-        return (salBase + (taxaComissao * totalVendas));
+        return salBase + (taxaComissao/100 * totalVendas);
     }
 
     public double calcGratificacao() {
@@ -52,7 +52,7 @@ public class FuncionarioComissionado extends Funcionario {
     }
     
     public double calcSalLiquido(){
-        return calcSalBruto() - calcDesconto() + calcGratificacao();
+        return (super.calcSalLiquido() + calcGratificacao());
     }
     
 }

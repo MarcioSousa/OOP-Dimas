@@ -36,6 +36,7 @@ public class Aplic {
         System.out.println("Ano Incrição:         " + pesJuridica.getAnoInscricao());
         System.out.println("Taxa de Incentivo: R$ " + df.format(pesJuridica.getTaxaIncentivo()));
         System.out.println("Total de Compras:  R$ " + df.format(pesJuridica.getTotalCompras()));
+        
         //PASSANDO COMO PARÂMETRO O ANO ATUAL.
         System.out.println("Bonus:             R$ " + df.format(pesJuridica.calcBonus(Integer.parseInt(String.valueOf(Calendar.getInstance().get(Calendar.YEAR))))));
         
