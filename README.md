@@ -9,3 +9,5 @@ Aula 07 - Generalização (SUPER CLASSE), Especialização (SUBCLASSE), Herança
 Aula 08 - Generalização, Especialização com Polimorfismo. Projeto Funcionário, Funcionario Horista, Funcionário Mensalista e Funcionário Comissionado. Fazendo incrementação de código sem fazer modificação do mesmo. Exercício - Criar classes Pessoa, PessoaJuridica, PessoaFisica.<br />
 Aula 09 - Uso do Downcasting e instanceof, usando a 6ª regra de orientação a objeto - Todo objeto é instância de uma classe. Utilizando laço de repetição para encontrar os objetos herdados. Utilizando Matriz de objetos. <br />
 Aula 10 - Primeira Avaliação da Disciplina. <br />
+Aula 11 - Trabalhando com Associações Binárias, Lista Simplesmente Cadeada e Duplamente Cadeada. Relações Unidirecional e Bidirecional. Multiplicidade (0..1, 1..1 , 1..n , n..n, 5..3). <br />
+Aula 12 - Agrupamento dinâmico de dados (Coleções com ArrayList) de uma Associação Binária. Fazendo criação de GUI (Graphical User Interface).
