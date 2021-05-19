@@ -5,6 +5,9 @@
  */
 package fatec.poo.view;
 
+import fatec.poo.model.Projeto;
+import java.util.ArrayList;
+
 /**
  *
  * @author Marcio Sousa
@@ -14,8 +17,9 @@ public class GuiProjeto extends javax.swing.JFrame {
     /**
      * Creates new form GuiProjeto
      */
-    public GuiProjeto() {
+    public GuiProjeto(ArrayList<Projeto> cadProj) {
         initComponents();
+        cadastro = cadProj;
     }
 
     /**
@@ -66,6 +70,11 @@ public class GuiProjeto extends javax.swing.JFrame {
 
         btnConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/Consultar.png"))); // NOI18N
         btnConsultar.setLabel("Consultar");
+        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarActionPerformed(evt);
+            }
+        });
 
         btnInserir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/Inserir.png"))); // NOI18N
         btnInserir.setEnabled(false);
@@ -79,10 +88,20 @@ public class GuiProjeto extends javax.swing.JFrame {
         btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/Alterar.png"))); // NOI18N
         btnAlterar.setEnabled(false);
         btnAlterar.setLabel("Alterar");
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
 
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/Remover.png"))); // NOI18N
         btnExcluir.setEnabled(false);
         btnExcluir.setLabel("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/Sair.png"))); // NOI18N
         btnSair.setLabel("Sair");
@@ -160,12 +179,121 @@ public class GuiProjeto extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCodigoActionPerformed
 
     private void btnInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirActionPerformed
-        // TODO add your handling code here:
+        Projeto projeto = new Projeto(Integer.parseInt(txtCodigo.getText()), txtDescricao.getText());
+        projeto.setDtInicio(txtDataInicio.getText());
+        projeto.setDtTermino(txtDataTermino.getText());
+        cadastro.add(projeto);
+        
+        txtCodigo.setText(null);
+        txtDescricao.setText(null);
+        txtDataInicio.setText(null);
+        txtDataTermino.setText(null);
+        
+        btnConsultar.setEnabled(true);
+        btnInserir.setEnabled(false);
+        btnAlterar.setEnabled(false);
+        btnExcluir.setEnabled(false);
+        
+        txtCodigo.setEnabled(true);
+        txtDescricao.setEnabled(false);
+        txtDataInicio.setEnabled(false);
+        txtDataTermino.setEnabled(false);
+        txtCodigo.requestFocus();
+                
     }//GEN-LAST:event_btnInserirActionPerformed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         dispose();
     }//GEN-LAST:event_btnSairActionPerformed
+
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+        int x;
+        for(x = 0; x < cadastro.size(); x++){
+            if(cadastro.get(x).getCodigo() == Integer.parseInt(txtCodigo.getText())){
+                break;
+            }
+        }
+        
+        if(x < cadastro.size()){
+            posProjeto = x; //localizou o objeto Departamento no Array
+        }else{
+            posProjeto = -1; //Não localizou o objeto no Array.
+        }
+        
+        if(posProjeto >= 0){ //Operação Alteração Exclusão
+            txtDescricao.setText(cadastro.get(posProjeto).getDescricao());
+            txtDataInicio.setText(cadastro.get(posProjeto).getDtInicio());
+            txtDataTermino.setText(cadastro.get(posProjeto).getDtTermino());
+            btnConsultar.setEnabled(false);
+            btnInserir.setEnabled(false);
+            btnAlterar.setEnabled(true);
+            btnExcluir.setEnabled(true);
+        }else{ //Operação de Inclusão
+            btnConsultar.setEnabled(false);
+            btnInserir.setEnabled(true);
+            btnAlterar.setEnabled(false);
+            btnExcluir.setEnabled(false);
+        }
+        
+        txtCodigo.setEnabled(false);
+        txtDescricao.setEnabled(true);
+        txtDataInicio.setEnabled(true);
+        txtDataTermino.setEnabled(true);
+        txtDescricao.requestFocus();
+        
+        
+       
+        
+        
+    }//GEN-LAST:event_btnConsultarActionPerformed
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        txtCodigo.setEnabled(false);
+        cadastro.get(posProjeto).setDescricao(txtDescricao.getText());
+        cadastro.get(posProjeto).setDtInicio(txtDataInicio.getText());
+        cadastro.get(posProjeto).setDtTermino(txtDataTermino.getText());
+        
+        txtCodigo.setText(null);
+        txtDescricao.setText(null);
+        txtDataInicio.setText(null);
+        txtDataTermino.setText(null);
+        
+        btnConsultar.setEnabled(true);
+        btnInserir.setEnabled(false);
+        btnAlterar.setEnabled(false);
+        btnExcluir.setEnabled(false);
+        
+        txtCodigo.setEnabled(true);
+        txtDescricao.setEnabled(false);
+        txtDataInicio.setEnabled(false);
+        txtDataTermino.setEnabled(false);
+        txtCodigo.requestFocus();
+
+    }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        if(posProjeto >= 0){
+            cadastro.remove(posProjeto);
+            posProjeto = -1;
+        }
+        
+        txtCodigo.setText(null);
+        txtDescricao.setText(null);
+        txtDataInicio.setText(null);
+        txtDataTermino.setText(null);
+        
+        btnConsultar.setEnabled(true);
+        btnInserir.setEnabled(false);
+        btnAlterar.setEnabled(false);
+        btnExcluir.setEnabled(false);
+       
+        txtCodigo.setEnabled(true);
+        txtDescricao.setEnabled(false);
+        txtDataInicio.setEnabled(false);
+        txtDataTermino.setEnabled(false);
+        txtCodigo.requestFocus();
+        
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -183,4 +311,6 @@ public class GuiProjeto extends javax.swing.JFrame {
     private javax.swing.JTextField txtDataTermino;
     private javax.swing.JTextField txtDescricao;
     // End of variables declaration//GEN-END:variables
+    private ArrayList<Projeto> cadastro;
+    private int posProjeto;
 }

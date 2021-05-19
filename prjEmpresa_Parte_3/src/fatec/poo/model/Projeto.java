@@ -11,10 +11,6 @@ import java.util.ArrayList;
 public class Projeto {
     private int codigo;
     private String descricao;
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
     private String dtInicio;
     private String dtTermino;
     private ArrayList<Funcionario> funcionarios; //multiplicidade 1..*

@@ -6,12 +6,13 @@
 package fatec.poo.view;
 
 import fatec.poo.model.Departamento;
-import fatec.poo.model.Projeto;
 import java.util.ArrayList;
+
+
 
 /**
  *
- * @author Marcio Sousa
+ * @author Dimas
  */
 public class GuiMenu extends javax.swing.JFrame {
 
@@ -76,11 +77,11 @@ public class GuiMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItemDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDepartamentoActionPerformed
-        new GuiDepartamento(cadDepto).setVisible(true);
+        new GuiDepartamento(cadDepto).setVisible(true);        
     }//GEN-LAST:event_jMenuItemDepartamentoActionPerformed
 
     private void jMenuItemProjetoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProjetoActionPerformed
-        new GuiProjeto(cadProj).setVisible(true);
+        new GuiProjeto().setVisible(true);
     }//GEN-LAST:event_jMenuItemProjetoActionPerformed
 
     /**
@@ -125,5 +126,4 @@ public class GuiMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemProjeto;
     // End of variables declaration//GEN-END:variables
     private ArrayList<Departamento> cadDepto = new ArrayList<Departamento>();
-    private ArrayList<Projeto> cadProj = new ArrayList<Projeto>();
 }

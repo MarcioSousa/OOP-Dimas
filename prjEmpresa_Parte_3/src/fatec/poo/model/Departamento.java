@@ -9,10 +9,6 @@ import java.util.ArrayList;
 public class Departamento {
     private String sigla;
     private String nome;
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
     private ArrayList<Funcionario> funcionarios; //multiplicidade 1..*
       
     public Departamento(String sigla, String nome) {

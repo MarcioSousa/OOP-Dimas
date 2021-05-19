@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package fatec.poo.view;
 
 import fatec.poo.model.Departamento;
@@ -5,10 +10,10 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Marcio Sousa
+ * @author Aulas
  */
 public class GuiDepartamento extends javax.swing.JFrame {
-    
+
     /**
      * Creates new form GuiDepartamento
      */
@@ -44,11 +49,6 @@ public class GuiDepartamento extends javax.swing.JFrame {
         jLabel2.setText("Nome");
 
         txtNome.setEnabled(false);
-        txtNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeActionPerformed(evt);
-            }
-        });
 
         btnConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/Consultar.png"))); // NOI18N
         btnConsultar.setText("Consultar");
@@ -61,29 +61,14 @@ public class GuiDepartamento extends javax.swing.JFrame {
         btnInserir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/Inserir.png"))); // NOI18N
         btnInserir.setText("Inserir");
         btnInserir.setEnabled(false);
-        btnInserir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInserirActionPerformed(evt);
-            }
-        });
 
         btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/Alterar.png"))); // NOI18N
         btnAlterar.setText("Alterar");
         btnAlterar.setEnabled(false);
-        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAlterarActionPerformed(evt);
-            }
-        });
 
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/Remover.png"))); // NOI18N
         btnExcluir.setText("Excluir");
         btnExcluir.setEnabled(false);
-        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExcluirActionPerformed(evt);
-            }
-        });
 
         btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/Sair.png"))); // NOI18N
         btnSair.setText("Sair");
@@ -98,7 +83,7 @@ public class GuiDepartamento extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnConsultar)
@@ -112,13 +97,13 @@ public class GuiDepartamento extends javax.swing.JFrame {
                         .addComponent(btnSair))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtSigla, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(20, Short.MAX_VALUE))
+                            .addComponent(txtSigla, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAlterar, btnConsultar, btnExcluir, btnInserir, btnSair});
@@ -126,7 +111,7 @@ public class GuiDepartamento extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
+                .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtSigla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -134,14 +119,14 @@ public class GuiDepartamento extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
+                .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnConsultar)
                     .addComponent(btnInserir)
                     .addComponent(btnAlterar)
                     .addComponent(btnExcluir)
                     .addComponent(btnSair))
-                .addGap(30, 30, 30))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAlterar, btnConsultar, btnExcluir, btnInserir, btnSair});
@@ -149,100 +134,42 @@ public class GuiDepartamento extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomeActionPerformed
-
-    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        int x;
-        for(x = 0; x < cadastro.size(); x++){
-            if(cadastro.get(x).getSigla().equals(txtSigla.getText())){
-                break;
-            }
-        }
-        
-        if(x < cadastro.size()){
-            posDepto = x; //localizou o objeto Departamento no Array
-        }else{
-            posDepto = -1; //Não localizou o objeto no Array.
-        }
-        
-        if(posDepto >= 0){ //Operação Alteração Exclusão
-            txtNome.setText(cadastro.get(posDepto).getNome());
-            btnConsultar.setEnabled(false);
-            btnInserir.setEnabled(false);
-            btnAlterar.setEnabled(true);
-            btnExcluir.setEnabled(true);
-        }else{ //Operação de Inclusão
-            btnConsultar.setEnabled(false);
-            btnInserir.setEnabled(true);
-            btnAlterar.setEnabled(false);
-            btnExcluir.setEnabled(false);
-        }
-        
-        txtSigla.setEnabled(false);
-        txtNome.setEnabled(true);
-        txtNome.requestFocus();
-        
-    }//GEN-LAST:event_btnConsultarActionPerformed
-
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         dispose();
     }//GEN-LAST:event_btnSairActionPerformed
 
-    private void btnInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirActionPerformed
-        //Instanciação de um objeto da classe Departamento
-        Departamento depto = new Departamento(txtSigla.getText(), txtNome.getText());
-        cadastro.add(depto);
-        
-        txtSigla.setText(null);
-        txtNome.setText(null);
-        btnConsultar.setEnabled(true);
-        btnInserir.setEnabled(false);
-        btnAlterar.setEnabled(false);
-        btnExcluir.setEnabled(false);
-        txtSigla.setEnabled(true);
-        txtNome.setEnabled(false);
-        txtSigla.requestFocus();
-    }//GEN-LAST:event_btnInserirActionPerformed
-
-    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        txtSigla.setEnabled(false);
-        cadastro.get(posDepto).setNome(txtNome.getText());
-        
-        txtSigla.setText(null);
-        txtNome.setText(null);
-        btnConsultar.setEnabled(true);
-        btnInserir.setEnabled(false);
-        btnAlterar.setEnabled(false);
-        btnExcluir.setEnabled(false);
-        txtSigla.setEnabled(true);
-        txtNome.setEnabled(false);
-        txtSigla.requestFocus();
-    }//GEN-LAST:event_btnAlterarActionPerformed
-
-    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        if(posDepto >= 0){
-            cadastro.remove(posDepto);
-            
-            posDepto = -1;
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+        int x;
+        for (x = 0; x < cadastro.size(); x++){
+            if (cadastro.get(x).getSigla().equals(txtSigla.getText())){
+                break;
+            }
         }
         
-        txtSigla.setText(null);
-        txtNome.setText(null);
+        if (x < cadastro.size()){
+            posDepto = x; //localizou o objeto Departamento no ArrayList
+        }else{
+            posDepto = -1; //não localizou o objeto Departamento no ArrayList
+        }
         
-        btnConsultar.setEnabled(true);
-        btnInserir.setEnabled(false);
-        btnAlterar.setEnabled(false);
-        btnExcluir.setEnabled(false);
-        
-        txtSigla.setEnabled(true);
-        txtNome.setEnabled(false);
-        txtSigla.requestFocus();
-        
-    }//GEN-LAST:event_btnExcluirActionPerformed
+        if (posDepto >= 0){ //operação de alteração ou exclusão
+           txtNome.setText(cadastro.get(posDepto).getNome()); 
+           btnConsultar.setEnabled(false);
+           btnInserir.setEnabled(false);
+           btnAlterar.setEnabled(true);
+           btnExcluir.setEnabled(true);
+        }else{ //operação de inclusão
+           btnConsultar.setEnabled(false);
+           btnInserir.setEnabled(true);
+           btnAlterar.setEnabled(false);
+           btnExcluir.setEnabled(false); 
+        }
+        txtSigla.setEnabled(false);
+        txtNome.setEnabled(true);
+        txtNome.requestFocus();
+    }//GEN-LAST:event_btnConsultarActionPerformed
+   
 
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnConsultar;
@@ -257,4 +184,3 @@ public class GuiDepartamento extends javax.swing.JFrame {
     private ArrayList<Departamento> cadastro;
     private int posDepto;
 }
-
