@@ -12,4 +12,5 @@ Aula 10 - Primeira Avaliação da Disciplina. <br />
 Aula 11 - Trabalhando com Associações Binárias, Lista Simplesmente Cadeada e Duplamente Cadeada. Relações Unidirecional e Bidirecional. Multiplicidade (0..1, 1..1 , 1..n , n..n, 5..3). <br />
 Aula 12 - Agrupamento dinâmico de dados (Coleções com ArrayList) de uma Associação Binária. Fazendo criação de GUI (Graphical User Interface).<br />
 Aula 13 - Construção de GUI. Conectando GUIs uma as outras, através de objetos do formulário. Utilizando menu Swing.<br />
-Aula 14 - Entrega do Primeiro Projeto. Contrução de GUI Departamento e Projeto (Seleção, Inserção, Alteração, Exclusão e Sair).<br />
+Aula 14 - Entrega da Primeira parte do Projeto. Contrução de GUI Departamento e Projeto (Seleção, Inserção, Alteração, Exclusão e Sair).<br />
+Aula 15 - Entrega da Segunda parte do Projeto. Inserindo um nova classe Funcionário com seus respectivos departamentos. Estabelecendo Associação Binária entre as classes. <br />
