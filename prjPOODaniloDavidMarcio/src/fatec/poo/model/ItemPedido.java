@@ -21,6 +21,7 @@ public class ItemPedido {
     public ItemPedido(int numeroItem, double qtdeVendida, Produto produto) {
         this.sequencia = numeroItem;
         this.qtdeVendida = qtdeVendida;
+        produto.setQtdeEstoque(produto.getQtdeEstoque() -  qtdeVendida);
         this.produto = produto;
     }
 

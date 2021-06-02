@@ -5,6 +5,11 @@
  */
 package fatec.poo.view;
 
+import fatec.poo.model.Cliente;
+import fatec.poo.model.Pessoa;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Marcio Sousa
@@ -14,8 +19,9 @@ public class GuiCliente extends javax.swing.JFrame {
     /**
      * Creates new form GuiCliente
      */
-    public GuiCliente() {
+    public GuiCliente(ArrayList<Pessoa> cadPes) {
         initComponents();
+        cadastro = cadPes;
         this.setLocationRelativeTo(null);
     }
 
@@ -145,6 +151,11 @@ public class GuiCliente extends javax.swing.JFrame {
         btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/fatec/poo/view/icon/Remover.png"))); // NOI18N
         btnExcluir.setText("Excluir");
         btnExcluir.setEnabled(false);
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         cbxUf.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
         cbxUf.setSelectedIndex(-1);
@@ -265,20 +276,140 @@ public class GuiCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        // TODO add your handling code here:
+        
+        if(Pessoa.validarCPF(txtFormatCpf.getText())){
+        
+            int x;
+            boolean passou = true;
+
+            for(x = 0; x < cadastro.size(); x++){
+                if (cadastro.get(x).getCpf().equals(txtFormatCpf.getText())){
+                    if(cadastro.get(x) instanceof Cliente){
+                        passou = true;
+                        break;
+                    }else{
+                        passou = false;
+                        break;
+                    }
+                }
+            }
+
+            if(passou){
+                for (x = 0; x < cadastro.size(); x++){    
+                    if (cadastro.get(x).getCpf().equals(txtFormatCpf.getText())){
+                        break;
+                    }
+                }
+
+                if (x < cadastro.size()){
+                    posCli = x; //localizou o objeto Departamento no ArrayList
+                }else{
+                    posCli = -1;//não localizou o objeto Departamento no ArrayList
+                }            
+        
+                if(posCli >= 0){
+                    txtNome.setText(cadastro.get(posCli).getNome());
+                    txtEndereco.setText(cadastro.get(posCli).getEndereco());
+                    txtCidade.setText(cadastro.get(posCli).getCidade());
+                    cbxUf.setSelectedItem(cadastro.get(posCli).getUf());
+                    txtDdd.setText(cadastro.get(posCli).getDdd());
+                    txtNumero.setText(cadastro.get(posCli).getTelefone());
+                    txtCep.setText(cadastro.get(posCli).getCep());
+                    txtLimiteCredito.setText(String.valueOf(((Cliente)cadastro.get(posCli)).getLimiteCred()));
+
+                    btnConsultar.setEnabled(false);
+                    btnInserir.setEnabled(false);
+                    btnAlterar.setEnabled(true);
+                    btnExcluir.setEnabled(true);
+                }else{
+                    btnConsultar.setEnabled(false);
+                    btnInserir.setEnabled(true);
+                    btnAlterar.setEnabled(false);
+                    btnExcluir.setEnabled(false);
+                    txtNome.requestFocus();
+                }
+                abrirCampos();
+            }else{
+                JOptionPane.showMessageDialog(rootPane, "O CPF informado não é de um Cliente.", "Erro com o CPF", HEIGHT);
+                txtFormatCpf.requestFocus();
+            }
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Ocorreu um erro ao connsultar o CPF.\nCPF inválido", "Erro com o CPF", HEIGHT);
+            txtFormatCpf.requestFocus();
+        }
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void btnInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirActionPerformed
-        // TODO add your handling code here:
+        Pessoa cliente = new Cliente(txtFormatCpf.getText(), txtNome.getText(), Double.parseDouble(txtLimiteCredito.getText()));
+        
+        cliente.setEndereco(txtEndereco.getText());
+        cliente.setCidade(txtCidade.getText());
+        cliente.setUf(cbxUf.getSelectedItem().toString());
+        cliente.setDdd(txtDdd.getText());
+        cliente.setTelefone(txtNumero.getText());
+        cliente.setCep(txtCep.getText());
+        //LIMITE DE CRÉDITO JÁ ESTÁ NO CONSTRUTOR, SÒ PARA EU, MARCIO, NÃO ESQUECER.
+
+        cadastro.add(cliente);
+        
+        fecharCampos();
+        limparCampos();
+
+        btnConsultar.setEnabled(true);
+        btnInserir.setEnabled(false);
+        btnAlterar.setEnabled(false);
+        btnExcluir.setEnabled(false);
+        
+        txtFormatCpf.setEnabled(true);
+        txtFormatCpf.requestFocus();
+       
     }//GEN-LAST:event_btnInserirActionPerformed
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        // TODO add your handling code here:
+        txtFormatCpf.setEnabled(false);
+        
+        cadastro.get(posCli).setNome(txtNome.getText());
+        cadastro.get(posCli).setEndereco(txtEndereco.getText());
+        cadastro.get(posCli).setCidade(txtCidade.getText());
+        cadastro.get(posCli).setUf(cbxUf.getSelectedItem().toString());
+        cadastro.get(posCli).setDdd(txtDdd.getText());
+        cadastro.get(posCli).setTelefone(txtNumero.getText());
+        cadastro.get(posCli).setCep(txtCep.getText());
+        ((Cliente)cadastro.get(posCli)).setLimiteCred(Double.parseDouble(txtLimiteCredito.getText()));
+
+        limparCampos();
+        fecharCampos();
+        
+        btnConsultar.setEnabled(true);
+        btnInserir.setEnabled(false);
+        btnAlterar.setEnabled(false);
+        btnExcluir.setEnabled(false);
+        
+        txtFormatCpf.setEnabled(true);
+        txtFormatCpf.requestFocus();
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void txtFormatCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFormatCpfActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFormatCpfActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        if(posCli >= 0){
+            cadastro.remove(posCli);
+            posCli = -1;
+        }
+        
+        limparCampos();
+        
+        btnConsultar.setEnabled(true);
+        btnInserir.setEnabled(false);
+        btnAlterar.setEnabled(false);
+        btnExcluir.setEnabled(false);
+        
+        txtFormatCpf.setEnabled(true);
+        txtFormatCpf.requestFocus();
+        
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;
@@ -306,4 +437,42 @@ public class GuiCliente extends javax.swing.JFrame {
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtNumero;
     // End of variables declaration//GEN-END:variables
+    
+    private void limparCampos(){
+        txtFormatCpf.setText(null);
+        txtNome.setText(null);
+        txtEndereco.setText(null);
+        txtCidade.setText(null);
+        cbxUf.setSelectedIndex(-1);
+        txtDdd.setText(null);
+        txtNumero.setText(null);
+        txtCep.setText(null);
+        txtLimiteCredito.setText(null);
+    }
+    
+    private void abrirCampos(){
+        txtFormatCpf.setEnabled(false);
+        txtNome.setEnabled(true);
+        txtEndereco.setEnabled(true);
+        txtCidade.setEnabled(true);
+        cbxUf.setEnabled(true);
+        txtDdd.setEnabled(true);
+        txtNumero.setEnabled(true);
+        txtCep.setEnabled(true);
+        txtLimiteCredito.setEnabled(true);
+    }
+    
+    private void fecharCampos(){
+        txtNome.setEnabled(false);
+        txtEndereco.setEnabled(false);
+        txtCidade.setEnabled(false);
+        cbxUf.setEnabled(false);
+        txtDdd.setEnabled(false);
+        txtNumero.setEnabled(false);
+        txtCep.setEnabled(false);
+        txtLimiteCredito.setEnabled(false);
+    }
+    
+    private ArrayList<Pessoa> cadastro;
+    private int posCli;
 }

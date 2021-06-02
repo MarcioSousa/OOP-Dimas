@@ -48,6 +48,7 @@ public class Vendedor extends Pessoa{
         System.out.println("Telefone: " + getTelefone());
         System.out.println("Salário Base: " + salarioBase);
         System.out.println("Taxa de Comissão: " + taxaComissao);
+        System.out.println("\nNúmero\t\tEmissão\t\t\tPagamento\t\tForma\t\tSituação");
         
         for(int x = 0; x < pedidos.size(); x++){
             System.out.println(pedidos.get(x).getNumero());

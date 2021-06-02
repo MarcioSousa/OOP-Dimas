@@ -81,6 +81,7 @@ public class Pedido {
         System.out.println("\n\nNúmero: " + dataPagto);
         System.out.println("\n\nNúmero: " + formaPagto);
         System.out.println("\n\nNúmero: " + situacao);
+        System.out.println("\nQtde Vendida\t\tSequência");
         
         for(int x = 0; x < itensPedido.size(); x++){
             System.out.println("\t\t" + itensPedido.get(x).getQtdeVendida());

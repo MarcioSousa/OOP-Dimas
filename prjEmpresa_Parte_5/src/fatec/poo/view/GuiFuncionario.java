@@ -326,7 +326,7 @@ public class GuiFuncionario extends javax.swing.JFrame {
 
     private void btnInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirActionPerformed
        //instanciação do objeto da classe Funcionario Horista, Mensalista ou Comissionado
-       Funcionario func=null; 
+       Funcionario func = null;
        if (cbxTipo.getSelectedIndex() == 0){
            func = new FuncionarioHorista(Integer.parseInt(txtRegistro.getText()),
                                          txtNome.getText(), 

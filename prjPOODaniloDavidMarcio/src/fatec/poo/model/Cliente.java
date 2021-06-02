@@ -49,6 +49,7 @@ public class Cliente extends Pessoa{
         System.out.println("Telefone: " + getTelefone());
         System.out.println("Limite de Crédito: " + limiteCred);
         System.out.println("Limite Disponível: " + limiteDisp);
+        System.out.println("\nNúmero\t\tEmissão\t\tPagamento\t\t\tForma\t\tSituaçao");
         
         for(int x = 0; x < pedidos.size(); x++){
             System.out.println(pedidos.get(x).getNumero());
@@ -58,6 +59,12 @@ public class Cliente extends Pessoa{
             System.out.println("\t\t" + pedidos.get(x).getSituacao());
         }
         
+        //Cliente:  Definição do método listarPedidos fora da especificação do diagrama de classes. 
+        
     }
     
 }
+
+//Cliente:  Definição do método listarPedidos fora da especificação do diagrama de classes. 
+//Vendedor: Definição do método listarPedidos fora da especificação do diagrama de classes
+//Pedido:   Definição do método listarItensPedido fora da especificação do diagrama de classes.
