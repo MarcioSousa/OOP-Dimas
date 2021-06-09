@@ -7,6 +7,7 @@ package fatec.poo.view;
 
 import fatec.poo.model.Cliente;
 import fatec.poo.model.Pessoa;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -276,6 +277,7 @@ public class GuiCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+        DecimalFormat df = new DecimalFormat("#,##0.00");
         
         if(Pessoa.validarCPF(txtFormatCpf.getText())){
         
@@ -315,7 +317,8 @@ public class GuiCliente extends javax.swing.JFrame {
                     txtDdd.setText(cadastro.get(posCli).getDdd());
                     txtNumero.setText(cadastro.get(posCli).getTelefone());
                     txtCep.setText(cadastro.get(posCli).getCep());
-                    txtLimiteCredito.setText(String.valueOf(((Cliente)cadastro.get(posCli)).getLimiteCred()));
+                    txtLimiteCredito.setText(String.valueOf(df.format(((Cliente)cadastro.get(posCli)).getLimiteCred())));
+                    lblLimiteDisponivel.setText(String.valueOf(df.format(((Cliente)cadastro.get(posCli)).getLimiteDisp())));
 
                     btnConsultar.setEnabled(false);
                     btnInserir.setEnabled(false);

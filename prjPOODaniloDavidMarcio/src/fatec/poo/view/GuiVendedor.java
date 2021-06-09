@@ -8,6 +8,7 @@ package fatec.poo.view;
 import fatec.poo.model.Vendedor;
 import fatec.poo.model.Pessoa;
 import static java.awt.image.ImageObserver.HEIGHT;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -274,6 +275,8 @@ public class GuiVendedor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSairActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+        DecimalFormat df = new DecimalFormat("#,##0.00");
+        
         if(Pessoa.validarCPF(txtFormatCpf.getText())){
             int x;
             
@@ -313,7 +316,7 @@ public class GuiVendedor extends javax.swing.JFrame {
                 txtDdd.setText(cadastro.get(posVen).getDdd());
                 txtNumero.setText(cadastro.get(posVen).getTelefone());
                 txtCep.setText(cadastro.get(posVen).getCep());
-                txtSalarioBase.setText(String.valueOf(((Vendedor)cadastro.get(posVen)).getSalarioBase()));
+                txtSalarioBase.setText(String.valueOf(df.format(((Vendedor)cadastro.get(posVen)).getSalarioBase())));
                 txtTaxaComissao.setText(String.valueOf(((Vendedor)cadastro.get(posVen)).getTaxaComissao()));
             
                 btnConsultar.setEnabled(false);

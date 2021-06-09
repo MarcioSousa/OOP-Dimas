@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class Cliente extends Pessoa{
     private double limiteCred;
     private double limiteDisp;
+
     private ArrayList<Pedido> pedidos;
 
     public Cliente(String cpf, String nome, double limiteCred) {

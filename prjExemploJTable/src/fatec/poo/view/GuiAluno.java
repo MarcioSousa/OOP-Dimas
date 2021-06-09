@@ -200,6 +200,7 @@ public class GuiAluno extends javax.swing.JFrame {
                     "Aviso",JOptionPane.ERROR_MESSAGE);
         }else{
             modTbAlu.removeRow(tblAluno.getSelectedRow());
+            
         }
 
     }//GEN-LAST:event_btnRemoverActionPerformed

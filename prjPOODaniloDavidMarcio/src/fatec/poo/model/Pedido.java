@@ -45,7 +45,15 @@ public class Pedido {
     public void setDataPagto(String dataPagto) {
         this.dataPagto = dataPagto;
     }
-
+    
+    public void removeItemPedido(ItemPedido itempedido){
+        itensPedido.remove(itempedido);
+    } 
+      
+    public ArrayList<ItemPedido> getItensPedido() {
+        return itensPedido;
+    }
+    
     public void setFormaPagto(boolean formaPagto) {
         this.formaPagto = formaPagto;
     }

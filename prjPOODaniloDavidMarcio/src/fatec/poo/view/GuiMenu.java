@@ -5,8 +5,12 @@
  */
 package fatec.poo.view;
 
+import fatec.poo.model.Cliente;
+import fatec.poo.model.ItemPedido;
+import fatec.poo.model.Pedido;
 import fatec.poo.model.Pessoa;
 import fatec.poo.model.Produto;
+import fatec.poo.model.Vendedor;
 import java.util.ArrayList;
 
 /**
@@ -21,6 +25,7 @@ public class GuiMenu extends javax.swing.JFrame {
     public GuiMenu() {
         initComponents();
         this.setLocationRelativeTo(null);
+        iniciaValores();
     }
 
     /**
@@ -128,7 +133,7 @@ public class GuiMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemSairActionPerformed
 
     private void jMenuItemEmitirPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEmitirPedidoActionPerformed
-        // TODO add your handling code here:
+        new GuiEmitirPedido(cadPed, cadCliVend, cadProd).setVisible(true);
     }//GEN-LAST:event_jMenuItemEmitirPedidoActionPerformed
 
     /**
@@ -179,5 +184,71 @@ public class GuiMenu extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     private ArrayList<Pessoa> cadCliVend = new ArrayList<Pessoa>();
     private ArrayList<Produto> cadProd = new ArrayList<Produto>();
+    private ArrayList<Pedido> cadPed = new ArrayList<Pedido>();
+    
+    private void iniciaValores(){
+        //CADASTRO DE PRODUTOS
+        Produto produto1 = new Produto("1010", "Cerveja");
+        produto1.setEstoqueMinimo(10);
+        produto1.setPreco(5.60);
+        produto1.setQtdeEstoque(10);
+        produto1.setUnidadeMedida("unid");
+        
+        Produto produto2 = new Produto("2020", "Refrigerante");
+        produto2.setEstoqueMinimo(20);
+        produto2.setPreco(9.00);
+        produto2.setQtdeEstoque(20);
+        produto2.setUnidadeMedida("unid");
+        
+        Produto produto3 = new Produto("3030", "Carvão");
+        produto3.setEstoqueMinimo(9);
+        produto3.setPreco(5.00);
+        produto3.setQtdeEstoque(30);
+        produto3.setUnidadeMedida("unid");
+        
+        cadProd.add(produto1);
+        cadProd.add(produto2);
+        cadProd.add(produto3);
+        
+        //CADASTRO DE CLIENTE
+        Pessoa pessoa1 = new Cliente("111.111.111-11", "Roberta", 300.00);
+        pessoa1.setCep("13300-000");
+        pessoa1.setCidade("Sorocaba");
+        pessoa1.setDdd("11");
+        pessoa1.setEndereco("Rua do Jaraguá");
+        pessoa1.setTelefone("999999999");
+        pessoa1.setUf("RJ");
+        ((Cliente)pessoa1).setLimiteCred(800);
+        
+        //CADASTRO DE VENDEDOR
+        Pessoa pessoa2 = new Vendedor("222.222.222-22", "Gabriel", 880.00);
+        pessoa2.setCep("13300-005");
+        pessoa2.setCidade("Itu");
+        pessoa2.setDdd("12");
+        pessoa2.setEndereco("Rua do Jucaré");
+        pessoa2.setTelefone("222222222");
+        pessoa2.setUf("RJ");
+        ((Vendedor)pessoa2).setTaxaComissao(2.4);
+        
+        cadCliVend.add(pessoa1);
+        cadCliVend.add(pessoa2);
+        
+        //CADASTRO ITEMPEDIDO
+        ItemPedido itempedido1 = new ItemPedido(1, 2.0, produto1);
+        ItemPedido itempedido2 = new ItemPedido(2, 5, produto3);
+        
+        Pedido pedido1 = new Pedido("123", "10/02/2021");
+        pedido1.setCliente((Cliente)pessoa1);
+        pedido1.setVendedor((Vendedor)pessoa2);
+        pedido1.setDataPagto("02/03/2021");
+        pedido1.setFormaPagto(false);
+        pedido1.setSituacao(false); 
+        cadPed.add(pedido1);
+        
+        pedido1.addItemPedido(itempedido1);
+        pedido1.addItemPedido(itempedido2);
+        //itempedido1.setPedido(pedido1);
+        
+    }
     
 }
