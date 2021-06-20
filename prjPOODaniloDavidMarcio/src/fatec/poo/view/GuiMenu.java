@@ -46,6 +46,7 @@ public class GuiMenu extends javax.swing.JFrame {
         jMenuItemSair = new javax.swing.JMenuItem();
         jMenuPedido = new javax.swing.JMenu();
         jMenuItemEmitirPedido = new javax.swing.JMenuItem();
+        jMenuItemAtualizarLimiteCredito = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Controle de Vendas");
@@ -98,6 +99,14 @@ public class GuiMenu extends javax.swing.JFrame {
         });
         jMenuPedido.add(jMenuItemEmitirPedido);
 
+        jMenuItemAtualizarLimiteCredito.setText("Atualizar Limite de Crédito");
+        jMenuItemAtualizarLimiteCredito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAtualizarLimiteCreditoActionPerformed(evt);
+            }
+        });
+        jMenuPedido.add(jMenuItemAtualizarLimiteCredito);
+
         jMenuBarVenda.add(jMenuPedido);
 
         setJMenuBar(jMenuBarVenda);
@@ -135,6 +144,10 @@ public class GuiMenu extends javax.swing.JFrame {
     private void jMenuItemEmitirPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEmitirPedidoActionPerformed
         new GuiEmitirPedido(cadPed, cadCliVend, cadProd).setVisible(true);
     }//GEN-LAST:event_jMenuItemEmitirPedidoActionPerformed
+
+    private void jMenuItemAtualizarLimiteCreditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAtualizarLimiteCreditoActionPerformed
+        new GuiAtualizaLimiteCredito(cadCliVend).setVisible(true);
+    }//GEN-LAST:event_jMenuItemAtualizarLimiteCreditoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -174,6 +187,7 @@ public class GuiMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBarVenda;
     private javax.swing.JMenu jMenuCadastro;
+    private javax.swing.JMenuItem jMenuItemAtualizarLimiteCredito;
     private javax.swing.JMenuItem jMenuItemCliente;
     private javax.swing.JMenuItem jMenuItemEmitirPedido;
     private javax.swing.JMenuItem jMenuItemProduto;

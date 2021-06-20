@@ -9,6 +9,15 @@ import java.util.ArrayList;
 public class Cliente extends Pessoa{
     private double limiteCred;
     private double limiteDisp;
+    private String tipo;
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
 
     private ArrayList<Pedido> pedidos;
 
